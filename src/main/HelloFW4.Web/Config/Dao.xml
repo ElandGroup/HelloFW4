@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+
+  <object id="SampleDao" type="HelloFW4.SampleMng.Dao.SampleDao, HelloFW4.SampleMng" parent="AbstractDao">
+  </object>
+
+
+</objects>
