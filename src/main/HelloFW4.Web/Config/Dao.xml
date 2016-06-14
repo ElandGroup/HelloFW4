@@ -4,5 +4,7 @@
   <object id="SampleDao" type="HelloFW4.SampleMng.Dao.SampleDao, HelloFW4.SampleMng" parent="AbstractDao">
   </object>
 
+  <object id="MySqlSampleDao" type="HelloFW4.SampleMng.Dao.MySqlSampleDao, HelloFW4.SampleMng" parent="AbstractDao_MySql">
+  </object>
 
 </objects>

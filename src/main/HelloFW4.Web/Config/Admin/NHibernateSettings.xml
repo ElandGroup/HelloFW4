@@ -6,11 +6,12 @@
     <property name="TemplateFlushMode" value="Auto" />
     <property name="CacheQueries" value="true" />
   </object>
-  
+
   <object id="SessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate4">
     <property name="DbProvider" ref="DbProvider" />
     <property name="MappingAssemblies">
       <list>
+        <value>HelloFW4.SampleMng</value>
       </list>
     </property>
     <property name="MappingResources">
@@ -31,6 +32,41 @@
 
   <db:provider id="DbProvider" provider="SqlServer-2.0"
              connectionString="${connectionString}" />
+
+  <!--MySql-->
+
+
+  <object id="HibernateTemplate_MySql" type="Spring.Data.NHibernate.Generic.HibernateTemplate, Spring.Data.NHibernate4">
+    <property name="SessionFactory" ref="SessionFactory_MySql" />
+    <property name="TemplateFlushMode" value="Auto" />
+    <property name="CacheQueries" value="true" />
+  </object>
+
+  <object id="SessionFactory_MySql" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate4">
+    <property name="DbProvider" ref="DbProvider_MySql" />
+    <property name="MappingAssemblies">
+      <list>
+        <value>HelloFW4.SampleMng</value>
+      </list>
+    </property>
+    <property name="MappingResources">
+      <list>
+        <value>~/Config/SqlMap/SqlMap.Sample.hbm.xml</value>
+      </list>
+    </property>
+    <property name="HibernateProperties">
+      <dictionary>
+        <entry key="connection.provider" value="NHibernate.Connection.DriverConnectionProvider" />
+        <entry key="dialect" value="${dialect_MySql}" />
+        <entry key="connection.driver_class" value="${driver_class_MySql}" />
+        <entry key="show_sql" value="false" />
+        <entry key="connection.isolation" value="ReadCommitted" />
+      </dictionary>
+    </property>
+  </object>
+
+  <db:provider id="DbProvider_MySql" provider="SqlServer-2.0"
+             connectionString="${connectionString_MySql}" />
 
 
 </objects>

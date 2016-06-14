@@ -1,4 +1,5 @@
 ﻿using HelloFW4.SampleMng.Service;
+using Newtonsoft.Json;
 using Spring.Context.Support;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,14 @@ namespace HelloFW4.Web.Controllers
             }
         }
 
+        public IMySqlSampleService MySqlSampleService
+        {
+            get
+            {
+                return ContextRegistry.GetContext().GetObject<IMySqlSampleService>("MySqlSampleService");
+            }
+        }
+
         #endregion
         //
         // GET: /Sample/
@@ -27,8 +36,18 @@ namespace HelloFW4.Web.Controllers
         public ActionResult Index()
         {
             ViewBag.Date = SampleService.GetDate().ToString();
+            ViewBag.MySqlDate = MySqlSampleService.GetDate().ToString();
             return View();
         }
+
+        public JsonResult GetFruit()
+        {
+            var fruitList = SampleService.GetFruit("Red");
+            var fruit =JsonConvert.SerializeObject(fruitList);
+            return Json(new { Data = fruit }, JsonRequestBehavior.AllowGet);
+        }
+
+    
 
     }
 }

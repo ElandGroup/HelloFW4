@@ -1,6 +1,29 @@
 ﻿@{
     //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script>
+
+        $(function () {
+            $("#btnFruit").on("click", function () {
+                $.post('@Url.Action("GetFruit", "Sample")', "", function (data) {
+                    if (data != null && data != undefined) {
+                        $("#lblFruit").text(data.Data);
+                    }
+                });
+            });
+        });
+    </script>
 }
 
+
 <h2>Index</h2>
-Date:@ViewBag.Date
+Sql Date::@ViewBag.Date
+<br />
+MySql Date::@ViewBag.MySqlDate
+<br />
+<input id="btnFruit" type="button" value="Search Fruit" />
+<br />
+<span id="lblFruit"></span>

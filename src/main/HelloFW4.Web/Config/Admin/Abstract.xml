@@ -5,4 +5,8 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
 
+  <object id="AbstractDao_MySql" abstract="true">
+    <property name="HibernateTemplate" ref="HibernateTemplate_MySql"/>
+  </object>
+
 </objects>

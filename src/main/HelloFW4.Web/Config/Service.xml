@@ -5,5 +5,8 @@
     <property name="SampleDao" ref="SampleDao"></property>
   </object>
 
+  <object id="MySqlSampleService" type="HelloFW4.SampleMng.Service.MySqlSampleService, HelloFW4.SampleMng">
+    <property name="MySqlSampleDao" ref="MySqlSampleDao"></property>
+  </object>
 
 </objects>
